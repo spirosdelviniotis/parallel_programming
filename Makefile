@@ -7,8 +7,8 @@
 
 
 #### Compiler and tool definitions shared by all build targets #####
-ring: ring.c
-	mpicc -o ring ring.c
+exe: main.c
+	mpicc -o ring main.c
 
 clean:
-	rm -f ring
+	rm -f exe
