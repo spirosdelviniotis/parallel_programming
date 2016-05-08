@@ -7,8 +7,8 @@
 
 
 #### Compiler and tool definitions shared by all build targets #####
-exe: main.c
-	mpicc -o exe main.c
+main: main.c
+	mpicc -o main main.c
 
 clean:
-	rm -f exe
+	rm -f main
