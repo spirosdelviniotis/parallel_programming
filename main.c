@@ -45,18 +45,18 @@ struct Parms {
 
 int main (int argc, char *argv[])
 {
-void inidat(), prtdat(), update();
-float  u[2][NXPROB][NYPROB];        /* array for grid */
-int	taskid,                     /* this task's unique id */
-	numworkers,                 /* number of worker processes */
-	numtasks,                   /* number of tasks */
-	averow,rows,offset,extra,   /* for sending rows of data */
-	dest, source,               /* to - from for message send-receive */
-	left,right,        /* neighbor tasks */
-	msgtype,                    /* for message types */
-	rc,start,end,               /* misc */
-	i,ix,iy,iz,it;              /* loop variables */
-MPI_Status status;
+	void inidat(), prtdat(), update();
+	float  u[2][NXPROB][NYPROB];        /* array for grid */
+	int	taskid,                     /* this task's unique id */
+		numworkers,                 /* number of worker processes */
+		numtasks,                   /* number of tasks */
+		averow,rows,offset,extra,   /* for sending rows of data */
+		dest, source,               /* to - from for message send-receive */
+		left,right,        /* neighbor tasks */
+		msgtype,                    /* for message types */
+		rc,start,end,               /* misc */
+		i,ix,iy,iz,it;              /* loop variables */
+	MPI_Status status;
 
 
 /* First, find out my taskid and how many tasks are running */
