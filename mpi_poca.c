@@ -10,8 +10,8 @@ int omp_get_thread_num(void) { return 0; }
 int omp_get_num_threads(void) { return 1; }
 #endif
 
-#define NXPROB      9                 /* x dimension of problem grid */
-#define NYPROB      9                 /* y dimension of problem grid */
+#define NXPROB      6                 /* x dimension of problem grid */
+#define NYPROB      6                 /* y dimension of problem grid */
 #define STEPS       100                /* number of time steps */
 #define MAXWORKER   8                  /* maximum number of worker tasks */
 #define MINWORKER   3                  /* minimum number of worker tasks */
@@ -49,6 +49,15 @@ double 	t1 = 0,					/* MPI time variables */
 	t2 = 0,
 	global = 0,				/* time variables */
 	local  = 0;	
+
+	FILE *fp[9];
+	int temp;
+
+	for(temp = 0; temp<9; temp++){
+		char str[10];
+		sprintf(str, "%d", temp);
+		fp[temp] = fopen(str, "w");
+	}
 
 
 	MPI_Init(&argc,&argv);
@@ -148,7 +157,7 @@ double 	t1 = 0,					/* MPI time variables */
 	
 	t2 = MPI_Wtime();
 
-	//fprint(fp[taskid], x, y, u, 1, 1, d, taskid);
+	fprint(fp[taskid], x, y, u, 1, 1, d, taskid);
 
 	local = t2 - t1;
 
@@ -226,10 +235,10 @@ void fprint(FILE *fp,int x,int y,float *u, int start1, int start2, int end, int 
 {
 	int j,i;
 	for(i=0;i<x;i++){
-	  for(j=0;j<y;j++){
-		fprintf(fp, "%6.1f ",*(u+i*y+j));
-	  }
-	  fprintf(fp,"\n");
+		for(j=0;j<y;j++){
+			fprintf(fp, "%6.1f ",*(u+i*y+j));
+		}
+		fprintf(fp,"\n");
 	}
 
 	fprintf(fp, "\n\n");
@@ -243,11 +252,4 @@ void fprint(FILE *fp,int x,int y,float *u, int start1, int start2, int end, int 
 	fclose(fp);
 	printf("taskid in fprint = %d\n", taskid);
 }
-/* FILE *fp[9];
-	int temp;
 
-	for(temp = 0; temp<9; temp++){
-	char str[10];
-	sprintf(str, "%d", temp);
-	fp[temp] = fopen(str, "w");
-	} */
