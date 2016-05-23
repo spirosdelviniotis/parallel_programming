@@ -33,6 +33,7 @@ int main (int argc, char *argv[])
 {
 	void	inidat(),
 		prtdat(), 
+		update_calculation();
 		update();
 	float	u[2][NXPROB][NYPROB];       /* array for grid */
 	float	*table_u;		    /* array for grid */
@@ -247,7 +248,8 @@ int main (int argc, char *argv[])
  *  subroutine update
  ****************************************************************************/
 
-void update_calculation(int ix, int iy, int y, float *u1, float *u2) {
+void update_calculation(int ix, int iy, int y, float *u1, float *u2) 
+{
 
 	*(u2+ix*y+iy) = *(u1+ix*y+iy)  +
 			parms.cx * (*(u1+(ix+1)*y+iy) +
@@ -260,18 +262,35 @@ void update_calculation(int ix, int iy, int y, float *u1, float *u2) {
 }
 
 
+void update_inside_table(int end, float *u1, float *u2)
+{
+	int i,j;
+	for (i = 2; i <= end + 1; i++) {  //end - 1 ???
+		for (j = 2; j <= end + 1; j++) {  //end - 1 ???
+			update_calculation(i, j, end+4, u1, u2);  //end+4 ????
+		}
+	}
+}  // d - 2 called
+
+
+void update_outside_table(int end, float *u1, float *u2)
+{
+	int i;
+	for (i = 1; i <= end; i++) {
+		update_calculation(1, i, end+2, u1, u2);
+		update_calculation(end, i, end+2, u1, u2);
+		update_calculation(i, 1, end+2, u1, u2);
+		update_calculation(i, end, end+2, u1, u2);
+	}
+}  // d called
+
+
 void update(int start, int end, int ny, float *u1, float *u2)
 {
    int ix, iy;
    for (ix = start; ix <= end; ix++) 
       for (iy = 1; iy <= ny-2; iy++) 
-         *(u2+ix*ny+iy) = *(u1+ix*ny+iy)  + 
-                          parms.cx * (*(u1+(ix+1)*ny+iy) +
-                          *(u1+(ix-1)*ny+iy) - 
-                          2.0 * *(u1+ix*ny+iy)) +
-                          parms.cy * (*(u1+ix*ny+iy+1) +
-                         *(u1+ix*ny+iy-1) - 
-                          2.0 * *(u1+ix*ny+iy));
+	      update_calculation(ix, iy, ny, u1, u2);
 }
 
 /*****************************************************************************
