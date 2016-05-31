@@ -4,29 +4,20 @@
  * Project: MPI 
  */
 
-
-#include "mpi.h"
 #include <stdio.h>
+#include <sys/time.h>
 #include <stdlib.h>
-#include <math.h>
+
+#ifdef _OPENMP
+#include <omp.h>
+#else
+int omp_get_thread_num(void) { return 0; }
+int omp_get_num_threads(void) { return 1; }
+#endif
 
 #define NXPROB      1000                 /* x dimension of problem grid */
 #define NYPROB      1000                 /* y dimension of problem grid */
 #define STEPS       100                /* number of time steps */
-#define MAXWORKER   8                  /* maximum number of worker tasks */
-#define MINWORKER   3                  /* minimum number of worker tasks */
-#define BEGIN       1                  /* message tag */
-#define DTAG        0                  /* message tag */
-#define UTAG        1                  /* message tag */
-#define LTAG        2                  /* message tag */
-#define RTAG        3                  /* message tag */
-#define NONE        -1                 /* indicates no neighbor */
-#define DONE        4                  /* message tag */
-#define MASTER      0                  /* taskid of first process */
-#define UP          0
-#define DOWN        1
-#define LEFT        2
-#define RIGHT       3
 
 
 struct Parms {
