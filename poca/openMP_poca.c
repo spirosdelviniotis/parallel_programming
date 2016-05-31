@@ -66,8 +66,8 @@ void update(int start, int end, int ny, float *u1, float *u2)
    
    #pragma omp parallel
     {
-        int tid = omp_get_thread_num();
-        int total = omp_get_num_threads();
+        //int tid = omp_get_thread_num();
+        //int total = omp_get_num_threads();
 		
         #pragma omp for   
 		//printf("This is thread %d of %d\n", tid, total);

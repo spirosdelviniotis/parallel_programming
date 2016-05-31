@@ -4,6 +4,13 @@
  * Project: MPI 
  */
 
+/* TO DO */
+// Add timer for calculation of execution time
+// Make code robust
+// Remove prints and unusable comments
+// Handle return values from MPI functions
+
+
 #include <stdio.h>
 #include <sys/time.h>
 #include <stdlib.h>
@@ -82,10 +89,8 @@ void update(int start, int end, int ny, float *u1, float *u2)
 	{
 		int tid = omp_get_thread_num();
 		int total = omp_get_num_threads();
-
-		#pragma omp for   
-			printf("	This is thread %d of %d\n", tid, total);
-
+		printf("	This is thread %d of %d\n", tid, total);
+		#pragma omp for
 			for (ix = start; ix <= end; ix++) {
 				for (iy = 1; iy <= ny-2; iy++) { 
 					*(u2+ix*ny+iy) = *(u1+ix*ny+iy)  + 
@@ -97,8 +102,6 @@ void update(int start, int end, int ny, float *u1, float *u2)
 							2.0 * *(u1+ix*ny+iy));
 				}
 			}
-
-			return;
 	}
 }
 	
@@ -114,6 +117,4 @@ void inidat(int nx, int ny, float *u) {
 			*(u+ix*ny+iy) = (float)(ix * (nx - ix - 1) * iy * (ny - iy - 1));
 		}
 	}
-	
-	return;
 }

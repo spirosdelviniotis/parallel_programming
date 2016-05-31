@@ -1,4 +1,4 @@
-#Tue May 31 17:37:30 EEST 2016
+#Tue May 31 18:59:23 EEST 2016
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\4d\\c5238f39994a95c9be58ceadf82073ac0531af=c1462900229832
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\6f\\037d4d9e619e0bc59992ddd4ba7da8432f93bc=c1461946264830
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\63\\a27a8ce6e2dfd21cca9a2b9e022931d472fed3=c1461932327423
@@ -14,7 +14,7 @@ c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\mpi_heat_2d\\ring.c=c1462725361134
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\a3\\2ce2c03be79308f0bfd37f29017013a3e27038=c1463219053481
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\mpi\\makefile=c1464705298326
-c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\nbproject\\private\\timestamps-linux02.di.uoa.gr-std10037-22=c1464687954077
+c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\nbproject\\private\\timestamps-linux02.di.uoa.gr-std10037-22=c1464705450391
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\2c\\32fb376972f0de149729d4442fc9d5ae7a7b4d=c1462726541381
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\bc\\0ff4f15e10e9c6ad6108f6ae6d7cc88283a0ec=c1462726565916
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\e0\\cf387266deb66b57879f9200231f8539c41c45=c1461932327409
@@ -77,13 +77,13 @@ c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\ca\\44365ca9c470ec9232b77de9f2f8fcf728e113=c1462902546744
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\0c\\8badd4894138ad0154fcb38c74fba8192f6f4e=c1463739289214
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\poca\\mpi_poca.c=c1464543334354
-c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\openmp\\openmp_main.c=c1464704761410
+c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\openmp\\openmp_main.c=c1464710317048
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\e1\\331d104dbbed6e278fa3d29043c4550c1df7d2=c1462726431937
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\aa\\e9340625a5443cc0cd4e5a385ace5d9ee82a9d=c1462901957013
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\nbproject\\package-release.bash=c1461932280830
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\ec\\346c7b68882c834ec1334f9773b82b3150e7d8=c1461938400836
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\commit_editmsg=c1462901957018
-c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\poca\\openmp_poca.c=c1464704463108
+c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\poca\\openmp_poca.c=c1464709273308
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\4a\\9a898df29b8efd6c08ead29376bc509dfdf433=c1462901956825
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\12\\fd28f60d5d4df759261b4b05f958f3b10303df=c1463421218081
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\f7\\e5266d23632f487aea98e57e0c1d79553b9b4e=c1461932327406
@@ -94,7 +94,7 @@ c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\6c\\c2127d074d8bc9be0f93c90b425e84b3e5d5ff=c1461932327420
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\8e\\ca2346fe5585e59cabb2f32fcc4cfddb222a99=c1463739416289
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\ee\\d5c0128b01d4d1ca9fe3140b8d610e7de12817=c1462900748606
-c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\mpi\\mpi_main.c=c1464688106448
+c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\mpi\\mpi_main.c=c1464709218759
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\5f\\b6314c0806edb4f48f7148f6021a958e25e037=c1462726459515
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\63\\0007f03b6a157ef2ed0de7086513cb74abf4b2=c1461946194345
 c\:\\users\\spirosdelvis\\documents\\netbeansprojects\\parallel_programming_mpi\\.git\\objects\\f1\\c7b411b665b0b035cf1f8854e1939b93d718af=c1461932327425
