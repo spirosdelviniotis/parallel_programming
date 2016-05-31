@@ -4,6 +4,12 @@
  * Project: MPI 
  */
 
+/* TO DO */
+// Reduce between t,t+1 every 20 loops
+// Make code robust
+// Remove prints and unusable comments
+// Handle return values from MPI functions
+
 
 #include "mpi.h"
 #include <stdio.h>
