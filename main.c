@@ -16,8 +16,8 @@
 #define MAXWORKER   8                  /* maximum number of worker tasks */
 #define MINWORKER   3                  /* minimum number of worker tasks */
 #define BEGIN       1                  /* message tag */
-#define DTAG        5                  /* message tag */
-#define UTAG        4                  /* message tag */
+#define DTAG        0                  /* message tag */
+#define UTAG        1                  /* message tag */
 #define LTAG        2                  /* message tag */
 #define RTAG        3                  /* message tag */
 #define NONE        -1                  /* indicates no neighbor */
@@ -133,10 +133,10 @@ int main(int argc, char *argv[])
 	start_time = MPI_Wtime();  /* Start Timer */
 	
 	for (it = 1; it <= STEPS; it++){
-		printf(" --> In Step[%d]: nbrs[UP] = %d.\n", it, nbrs[UP]);
-		printf(" --> In Step[%d]: nbrs[DOWN] = %d.\n", it, nbrs[DOWN]);
-		printf(" --> In Step[%d]: nbrs[LEFT] = %d.\n", it, nbrs[LEFT]);
-		printf(" --> In Step[%d]: nbrs[RIGHT] = %d.\n", it, nbrs[RIGHT]);
+//		printf(" --> In Step[%d]: nbrs[UP] = %d.\n", it, nbrs[UP]);
+//		printf(" --> In Step[%d]: nbrs[DOWN] = %d.\n", it, nbrs[DOWN]);
+//		printf(" --> In Step[%d]: nbrs[LEFT] = %d.\n", it, nbrs[LEFT]);
+//		printf(" --> In Step[%d]: nbrs[RIGHT] = %d.\n", it, nbrs[RIGHT]);
 		if (nbrs[UP] >= 0){								//up
 			MPI_Isend(table_u + iz*sub_x*sub_y + sub_y + 1, sub_table_dimention, MPI_FLOAT, nbrs[UP], DTAG, cartcomm, &req[0]);
 			MPI_Irecv(table_u + iz*sub_x*sub_y + 1, sub_table_dimention, MPI_FLOAT, nbrs[UP], UTAG, cartcomm, &req[1]);
