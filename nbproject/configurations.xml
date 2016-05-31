@@ -12,8 +12,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.c</itemPath>
-      <itemPath>mpi_poca.c</itemPath>
+      <itemPath>MPI_main.c</itemPath>
+      <itemPath>OpenMP_main.c</itemPath>
+      <itemPath>mpi_heat2D.c</itemPath>
+      <itemPath>poca/mpi_poca.c</itemPath>
+      <itemPath>openMP_poca.c</itemPath>
       <itemPath>ring.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -26,6 +29,7 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
+      <itemPath>askdate.csh</itemPath>
     </logicalFolder>
     <itemPath>machines</itemPath>
   </logicalFolder>
@@ -49,11 +53,17 @@
           </incFile>
         </cTool>
       </compileType>
+      <item path="MPI_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="OpenMP_main.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
+      <item path="mpi_heat2D.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="mpi_poca.c" ex="false" tool="0" flavor2="0">
+      <item path="openMP_poca.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="poca/mpi_poca.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ring.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -78,11 +88,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="MPI_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="OpenMP_main.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
+      <item path="mpi_heat2D.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="mpi_poca.c" ex="false" tool="0" flavor2="0">
+      <item path="openMP_poca.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="poca/mpi_poca.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ring.c" ex="false" tool="0" flavor2="0">
       </item>
