@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>CUDA/common/inc/lcutil.h</itemPath>
+      <itemPath>CUDA/common/inc/timestamp.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -15,9 +17,6 @@
       <itemPath>MPI/MPI_main.c</itemPath>
       <itemPath>OpenMP/OpenMP_main.c</itemPath>
       <itemPath>MPI_Heat_2D/mpi_heat2D.c</itemPath>
-      <itemPath>poca/mpi_poca.c</itemPath>
-      <itemPath>poca/openMP_poca.c</itemPath>
-      <itemPath>MPI_Heat_2D/ring.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -29,8 +28,12 @@
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>MPI/Makefile</itemPath>
+      <itemPath>OpenMP/Makefile</itemPath>
       <itemPath>askdate.csh</itemPath>
+      <itemPath>CUDA/makefile</itemPath>
+      <itemPath>CUDA/run.sh</itemPath>
     </logicalFolder>
+    <itemPath>CUDA/CUDA_main.cu</itemPath>
     <itemPath>machines</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -50,22 +53,24 @@
           </incDir>
           <incFile>
             <pElem>.</pElem>
+            <pElem>CUDA/common/inc/lcutil.h</pElem>
+            <pElem>CUDA/common/inc/timestamp.h</pElem>
           </incFile>
         </cTool>
       </compileType>
+      <item path="CUDA/CUDA_main.cu" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CUDA/common/inc/lcutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CUDA/common/inc/timestamp.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MPI/MPI_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="MPI_Heat_2D/mpi_heat2D.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="MPI_Heat_2D/ring.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="OpenMP/OpenMP_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="poca/mpi_poca.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="poca/openMP_poca.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -88,19 +93,19 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="CUDA/CUDA_main.cu" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CUDA/common/inc/lcutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CUDA/common/inc/timestamp.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MPI/MPI_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="MPI_Heat_2D/mpi_heat2D.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="MPI_Heat_2D/ring.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="OpenMP/OpenMP_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="poca/mpi_poca.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="poca/openMP_poca.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>
