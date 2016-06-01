@@ -12,12 +12,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>MPI_main.c</itemPath>
-      <itemPath>OpenMP_main.c</itemPath>
-      <itemPath>mpi_heat2D.c</itemPath>
+      <itemPath>MPI/MPI_main.c</itemPath>
+      <itemPath>OpenMP/OpenMP_main.c</itemPath>
+      <itemPath>MPI_Heat_2D/mpi_heat2D.c</itemPath>
       <itemPath>poca/mpi_poca.c</itemPath>
-      <itemPath>openMP_poca.c</itemPath>
-      <itemPath>ring.c</itemPath>
+      <itemPath>poca/openMP_poca.c</itemPath>
+      <itemPath>MPI_Heat_2D/ring.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -28,7 +28,7 @@
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>Makefile</itemPath>
+      <itemPath>MPI/Makefile</itemPath>
       <itemPath>askdate.csh</itemPath>
     </logicalFolder>
     <itemPath>machines</itemPath>
@@ -53,19 +53,19 @@
           </incFile>
         </cTool>
       </compileType>
-      <item path="MPI_main.c" ex="false" tool="0" flavor2="0">
+      <item path="MPI/MPI_main.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="OpenMP_main.c" ex="false" tool="0" flavor2="0">
+      <item path="MPI_Heat_2D/mpi_heat2D.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="MPI_Heat_2D/ring.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="OpenMP/OpenMP_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="mpi_heat2D.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="openMP_poca.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="poca/mpi_poca.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="ring.c" ex="false" tool="0" flavor2="0">
+      <item path="poca/openMP_poca.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -88,19 +88,19 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="MPI_main.c" ex="false" tool="0" flavor2="0">
+      <item path="MPI/MPI_main.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="OpenMP_main.c" ex="false" tool="0" flavor2="0">
+      <item path="MPI_Heat_2D/mpi_heat2D.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="MPI_Heat_2D/ring.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="OpenMP/OpenMP_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="mpi_heat2D.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="openMP_poca.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="poca/mpi_poca.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="ring.c" ex="false" tool="0" flavor2="0">
+      <item path="poca/openMP_poca.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

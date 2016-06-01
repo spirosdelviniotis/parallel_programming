@@ -5,10 +5,9 @@
  */
 
 /* TO DO */
-// Add timer for calculation of execution time
 // Make code robust
 // Remove prints and unusable comments
-// Handle return values from MPI functions
+// Handle return values from OpenMP functions ?
 
 
 #include <stdio.h>
@@ -37,15 +36,13 @@ int main(int argc, char *argv[])
 {
 	void	inidat(),
 		update();
-	float *table_u; /* array for grid */
+	float *table_u;			/* array for grid */
 	int	offset,			/* for sending rows of data */
 		ix, iy, iz, it;		/* loop variables */
-	double 	start_time = 0,		/* start time */
-		end_time = 0,		/* end time */
-		process_clock = 0,	/* process's duration */
-		master_clock  = 0;	/* master's duration */
+	double 	total_time = 0;		/* Time of execution */
 
-
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
 
 	table_u = (float*) malloc((2 * NXPROB * NYPROB) * sizeof(float)); //free must be added!
 	if (table_u == NULL) {
@@ -72,6 +69,10 @@ int main(int argc, char *argv[])
 		iz = 1 - iz;
 	}
 	
+	gettimeofday(&end, NULL);
+	total_time = ((end.tv_sec  - start.tv_sec) * 1000000u + end.tv_usec - start.tv_usec) / 1.e6;
+	printf("Number of steps: %d \nTime elapsed: %lf sec\n", STEPS, total_time);
+	
 	/* Free resources */
 	free(table_u);
 	
@@ -87,9 +88,9 @@ void update(int start, int end, int ny, float *u1, float *u2)
 	
 	#pragma omp parallel
 	{
-		int tid = omp_get_thread_num();
-		int total = omp_get_num_threads();
-		printf("	This is thread %d of %d\n", tid, total);
+//		int tid = omp_get_thread_num();
+//		int total = omp_get_num_threads();
+//		printf("	This is thread %d of %d\n", tid, total);
 		#pragma omp for
 			for (ix = start; ix <= end; ix++) {
 				for (iy = 1; iy <= ny-2; iy++) { 

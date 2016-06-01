@@ -7,12 +7,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/Makefile</file>
-            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/mpi_heat2D.c</file>
-            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/machines</file>
-            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/ring.c</file>
-            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/poca/mpi_poca.c</file>
-            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/main.c</file>
+            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/poca/openMP_poca.c</file>
+            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/OpenMP/OpenMP_main.c</file>
+            <file>file:/C:/Users/SpirosDelvis/Documents/NetBeansProjects/parallel_programming_mpi/OpenMP/Makefile</file>
         </group>
     </open-files>
 </project-private>
