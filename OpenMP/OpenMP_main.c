@@ -112,9 +112,9 @@ int main(int argc, char *argv[])
 	}
 
 	/* Initialize parallel grid tables with Zero */
-	#pragma omp parallel
+	//#pragma omp parallel
 	{
-		#pragma omp for
+	//	#pragma omp for
 		for (iz = 0; iz < 2; iz++) {
 			for (ix = 0; ix < sub_x; ix++) {
 				for (iy = 0; iy < sub_y; iy++) {
@@ -247,11 +247,15 @@ void update_inside_table(int end, float *u1, float *u2)
 void update_outside_table(int end, float *u1, float *u2)
 {
 	int i;
-	for (i = 1; i <= end; i++) {
-		update_calculation(1, i, end + 2, u1, u2);
-		update_calculation(end, i, end + 2, u1, u2);
-		update_calculation(i, 1, end + 2, u1, u2);
-		update_calculation(i, end, end + 2, u1, u2);
+	#pragma omp parallel
+	{
+		#pragma omp for
+		for (i = 1; i <= end; i++) {
+			update_calculation(1, i, end + 2, u1, u2);
+			update_calculation(end, i, end + 2, u1, u2);
+			update_calculation(i, 1, end + 2, u1, u2);
+			update_calculation(i, end, end + 2, u1, u2);
+		}
 	}
 }
 
