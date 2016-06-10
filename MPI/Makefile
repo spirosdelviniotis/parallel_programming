@@ -2,7 +2,6 @@
 ##
 ## User: Spiros Delviniotis
 ##
-## This file is generated automatically.
 ##
 
 #### Compiler and tool definitions shared by all build targets #####
