@@ -4,6 +4,7 @@
  * Project: MPI 
 */
 
+// /usr/bin/time -p mpiexec -n 4 OpenMP_main
 
 #include "mpi.h"
 #include <stdio.h>
