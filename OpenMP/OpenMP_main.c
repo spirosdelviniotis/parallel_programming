@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define NXPROB      240		/* x dimension of problem grid */
-#define NYPROB      240                /* y dimension of problem grid */
+#define NXPROB      960		/* x dimension of problem grid */
+#define NYPROB      960                /* y dimension of problem grid */
 #define STEPS       100			/* number of time steps */
 #define DTAG        0			/* message tag */
 #define UTAG        1			/* message tag */
@@ -247,15 +247,11 @@ void update_inside_table(int end, float *u1, float *u2)
 void update_outside_table(int end, float *u1, float *u2)
 {
 	int i;
-	#pragma omp parallel
-	{
-		#pragma omp for
-		for (i = 1; i <= end; i++) {
-			update_calculation(1, i, end + 2, u1, u2);
-			update_calculation(end, i, end + 2, u1, u2);
-			update_calculation(i, 1, end + 2, u1, u2);
-			update_calculation(i, end, end + 2, u1, u2);
-		}
+	for (i = 1; i <= end; i++) {
+		update_calculation(1, i, end + 2, u1, u2);
+		update_calculation(end, i, end + 2, u1, u2);
+		update_calculation(i, 1, end + 2, u1, u2);
+		update_calculation(i, end, end + 2, u1, u2);
 	}
 }
 
