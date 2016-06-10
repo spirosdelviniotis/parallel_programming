@@ -5,8 +5,6 @@
  */
 
 /* TO DO */
-// Reduce between t,t+1 every 20 loops
-// Make code robust
 // Remove prints and unusable comments
 // Handle return values from MPI functions
 
@@ -16,19 +14,16 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define NXPROB      1000                 /* x dimension of problem grid */
-#define NYPROB      1000                 /* y dimension of problem grid */
-#define STEPS       100                /* number of time steps */
-#define MAXWORKER   8                  /* maximum number of worker tasks */
-#define MINWORKER   3                  /* minimum number of worker tasks */
-#define BEGIN       1                  /* message tag */
-#define DTAG        0                  /* message tag */
-#define UTAG        1                  /* message tag */
-#define LTAG        2                  /* message tag */
-#define RTAG        3                  /* message tag */
-#define NONE        -1                 /* indicates no neighbor */
-#define DONE        4                  /* message tag */
-#define MASTER      0                  /* taskid of first process */
+#define NXPROB      1000		/* x dimension of problem grid */
+#define NYPROB      1000                /* y dimension of problem grid */
+#define STEPS       100			/* number of time steps */
+#define DTAG        0			/* message tag */
+#define UTAG        1			/* message tag */
+#define LTAG        2			/* message tag */
+#define RTAG        3			/* message tag */
+#define NONE        -1			/* indicates no neighbor */
+#define DONE        4			/* message tag */
+#define MASTER      0			/* taskid of first process */
 #define UP          0
 #define DOWN        1
 #define LEFT        2
@@ -47,9 +42,9 @@ int main(int argc, char *argv[])
 		prtdat(),
 		update_outside_table(),
 		update_inside_table();
-	float *table_u; /* array for grid */
-	int	taskid, /* this task's unique id */
-		rc,
+	float	*table_u;		/* array for grid */
+	int	taskid,			/* this task's unique id */
+		rc,			/* MPI Abord */
 		numworkers,		/* number of worker processes */
 		numtasks,		/* number of tasks */
 		offset,			/* for sending rows of data */
@@ -60,21 +55,21 @@ int main(int argc, char *argv[])
 		size,			/* Size of idim specifying the number of processes in each dimension */
 		dims[2],		/* Array of size ndims */
 		reorder = 1,		/* Ranking may be reordered (true) or not (false) (logical) */
-		periods[2] = {0, 0};	/* Logical  array  of  size ndims specifying whether the grid is periodic */
+		periods[2] = {0, 0};	/* Logical  array of size ndims specifying whether the grid is periodic */
 	double 	start_time = 0,		/* start time */
 		end_time = 0,		/* end time */
 		process_clock = 0,	/* process's duration */
 		master_clock  = 0;	/* master's duration */
 
 	/* Logs for Debug */
-	FILE * fp[9];
-	int temp;
-
-	for (temp = 0; temp < 9; temp++) {
-		char str[10];
-		sprintf(str, "%d", temp);
-		fp[temp] = fopen(str, "w");
-	}
+//	FILE * fp[9];
+//	int temp;
+//
+//	for (temp = 0; temp < 9; temp++) {
+//		char str[10];
+//		sprintf(str, "%d", temp);
+//		fp[temp] = fopen(str, "w");
+//	}
 
 	/* First, find out my taskid and how many tasks are running */
 	MPI_Init(&argc, &argv);
@@ -107,19 +102,20 @@ int main(int argc, char *argv[])
 	sub_x = sub_table_dimention + 2;
 	sub_y = sub_table_dimention + 2;
 
-	table_u = (float*) malloc((2 * sub_x * sub_y) * sizeof(float)); //free must be added!
+	/* Allocate memory dynamically */
+	table_u = (float*) malloc((2 * sub_x * sub_y) * sizeof(float));
 	if (table_u == NULL) {
 		printf("Main ERROR: Allocation memory.\n");
 		MPI_Abort(cartcomm, rc);
 		return(EXIT_FAILURE);
 	}
-
+	
+	/* Initialize grid tables with Zero */
 	for (iz = 0; iz < 2; iz++) {
 		for (ix = 0; ix < sub_x; ix++) {
 			for (iy = 0; iy < sub_y; iy++) {
 				offset = iz * sub_x * sub_y + ix * sub_y + iy;
 				*(table_u + offset) = 0.0;
-				//printf("	[%d]\n",  offset);
 			}
 		}
 	}
@@ -127,44 +123,44 @@ int main(int argc, char *argv[])
 	/* Initialize Table */
 	inidat(sub_table_dimention, sub_table_dimention, sub_y, (table_u + sub_y + 1));
 
-	iz = 0;
-	MPI_Request req[8];
-	MPI_Status status[8];
-
 	/* Datatype Definition */
 	MPI_Datatype COL_INT;
 	MPI_Type_vector(sub_table_dimention, 1, sub_y, MPI_FLOAT, &COL_INT);
 	MPI_Type_commit(&COL_INT);
 	
-	start_time = MPI_Wtime();  /* Start Timer */
+	iz = 0;  // initialize iz to first table
+	MPI_Request req[8];
+	MPI_Status status[8];
+	
+	/* Start Timer */
+	start_time = MPI_Wtime();
 	
 	for (it = 1; it <= STEPS; it++){
-//		printf(" --> In Step[%d]: nbrs[UP] = %d.\n", it, nbrs[UP]);
-//		printf(" --> In Step[%d]: nbrs[DOWN] = %d.\n", it, nbrs[DOWN]);
-//		printf(" --> In Step[%d]: nbrs[LEFT] = %d.\n", it, nbrs[LEFT]);
-//		printf(" --> In Step[%d]: nbrs[RIGHT] = %d.\n", it, nbrs[RIGHT]);
-		if (nbrs[UP] >= 0){								//up
+		/* Send and Receive asynchronous the shared values of neighbor */
+		if (nbrs[UP] >= 0){ 
 			MPI_Isend(table_u + iz*sub_x*sub_y + sub_y + 1, sub_table_dimention, MPI_FLOAT, nbrs[UP], DTAG, cartcomm, &req[0]);
 			MPI_Irecv(table_u + iz*sub_x*sub_y + 1, sub_table_dimention, MPI_FLOAT, nbrs[UP], UTAG, cartcomm, &req[1]);
 		}
 
-		if (nbrs[DOWN] >= 0){							//down
+		if (nbrs[DOWN] >= 0){
 			MPI_Isend(table_u + iz*sub_x*sub_y + sub_table_dimention*sub_y + 1, sub_table_dimention , MPI_FLOAT, nbrs[DOWN], UTAG, cartcomm, &req[2]);
 			MPI_Irecv(table_u + iz*sub_x*sub_y + (sub_table_dimention+1)*sub_y + 1, sub_table_dimention , MPI_FLOAT, nbrs[DOWN], DTAG, cartcomm, &req[3]);
 		}
 
-		if (nbrs[LEFT] >= 0){								//left
+		if (nbrs[LEFT] >= 0){
 			MPI_Isend(table_u + iz*sub_x*sub_y + sub_y + 1, 1, COL_INT, nbrs[LEFT], RTAG, cartcomm,&req[4]);
 			MPI_Irecv(table_u + iz*sub_x*sub_y + sub_y, 1, COL_INT, nbrs[LEFT], LTAG, cartcomm, &req[5]);
 		}
 
-		if (nbrs[RIGHT] >= 0 ){							//right
+		if (nbrs[RIGHT] >= 0 ){
 			MPI_Isend(table_u + iz*sub_x*sub_y + sub_y + sub_table_dimention, 1, COL_INT, nbrs[RIGHT], LTAG, cartcomm,&req[6]);
 			MPI_Irecv(table_u + iz*sub_x*sub_y + sub_y + sub_table_dimention + 1, 1, COL_INT , nbrs[RIGHT], RTAG, cartcomm,&req[7]);
 		}
 
+		/* Update inside table while the process wait for neighbor values */
 		update_inside_table(sub_table_dimention - 2, table_u + iz*sub_x*sub_y, table_u + (1-iz)*sub_x*sub_y);
 
+		/* Wait for neighbor values */
 		if(nbrs[UP] >= 0){
 			MPI_Wait(&req[0],&status[0]);
 			MPI_Wait(&req[1],&status[1]);
@@ -182,21 +178,25 @@ int main(int argc, char *argv[])
 			MPI_Wait(&req[7],&status[7]);
 		}
 
+		/* Update outside table with neighboor values */
 		update_outside_table(sub_table_dimention, table_u + iz*sub_x*sub_y, table_u + (1-iz)*sub_x*sub_y);
+		
+		/* Next loop with have to deal with the other table */
 		iz = 1 - iz;
-//		printf(" -> End of i loop.\n");
 	}
 	
-	end_time = MPI_Wtime();  /* Stop Timer */
+	/* Stop Timer */
+	end_time = MPI_Wtime();
 	
-	prtdat(fp[taskid], sub_x, sub_y, table_u, 1, 1, sub_table_dimention, taskid);
+//	prtdat(fp[taskid], sub_x, sub_y, table_u, 1, 1, sub_table_dimention, taskid);
 
 	process_clock = end_time - start_time;
 	MPI_Reduce(&process_clock, &master_clock, 1, MPI_DOUBLE, MPI_MAX, 0, cartcomm);
 	MPI_Barrier(cartcomm);
 
+	/* Print out time elapsed */
 	if (taskid == MASTER){
-		printf("Total time elapsed = %lf \n", master_clock);
+		printf("Total time elapsed for:\n\tTable [%d]x[%d] = %lf \n", NXPROB, NYPROB, master_clock);
 	}
 
 	/* Free resources */
@@ -227,9 +227,9 @@ void update_calculation(int ix, int iy, int y, float *u1, float *u2)
 void update_inside_table(int end, float *u1, float *u2)
 {
 	int i, j;
-	for (i = 2; i <= end + 1; i++) { //end - 1 ???
-		for (j = 2; j <= end + 1; j++) { //end - 1 ???
-			update_calculation(i, j, end + 4, u1, u2); //end+4 ????
+	for (i = 2; i <= end + 1; i++) {
+		for (j = 2; j <= end + 1; j++) {
+			update_calculation(i, j, end + 4, u1, u2);
 		}
 	}
 }
@@ -257,8 +257,6 @@ void inidat(int nx, int ny, int y, float *u)
 	for (ix = 0; ix <= nx - 1; ix++) {
 		for (iy = 0; iy <= ny - 1; iy++) {
 			*(u + ix * (y) + iy) = (float) (ix * (nx - ix - 1) * iy * (ny - iy - 1) + 10);
-			// here must be copied data from original initialized table.
-			//printf("	[%d] = %6.1f", (int) (u + ix * (y) + iy), *(u + ix * (y) + iy));
 		}
 	}
 }
