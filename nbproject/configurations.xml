@@ -16,6 +16,7 @@
                    projectFiles="true">
       <itemPath>MPI/MPI_main.c</itemPath>
       <itemPath>OpenMP/OpenMP_main.c</itemPath>
+      <itemPath>OpenMP/Pure_OpenMP_main.c</itemPath>
       <itemPath>MPI_Heat_2D/mpi_heat2D.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -70,6 +71,8 @@
       </item>
       <item path="OpenMP/OpenMP_main.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="OpenMP/Pure_OpenMP_main.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
@@ -104,6 +107,8 @@
       <item path="MPI_Heat_2D/mpi_heat2D.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="OpenMP/OpenMP_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="OpenMP/Pure_OpenMP_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="machines" ex="false" tool="3" flavor2="0">
       </item>
