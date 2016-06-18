@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=parallel_programming_mpi
+PROJECTNAME=parallel_programming_DI
 
 # Active Configuration
 DEFAULTCONF=Debug
