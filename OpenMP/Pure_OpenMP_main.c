@@ -9,6 +9,7 @@
 // Remove prints and unusable comments
 // Handle return values from OpenMP functions ?
 
+// mpicc -fopenmp -o Pure_OpenMP_main Pure_OpenMP_main.c -lm
 
 #include <stdio.h>
 #include <sys/time.h>
@@ -21,8 +22,8 @@ int omp_get_thread_num(void) { return 0; }
 int omp_get_num_threads(void) { return 1; }
 #endif
 
-#define NXPROB      960                 /* x dimension of problem grid */
-#define NYPROB      960                 /* y dimension of problem grid */
+#define NXPROB      3600                 /* x dimension of problem grid */
+#define NYPROB      3600                 /* y dimension of problem grid */
 #define STEPS       100                /* number of time steps */
 
 
