@@ -6,9 +6,9 @@
 #include "common/inc/lcutil.h"
 #include "common/inc/timestamp.h"
 
-#define NXPROB      3600                 /* x dimension of problem grid */
-#define NYPROB      3600                 /* y dimension of problem grid */
-#define STEPS       100                /* number of time steps */
+#define NXPROB      3600                /* x dimension of problem grid */
+#define NYPROB      3600                /* y dimension of problem grid */
+#define STEPS       10000                /* number of time steps */
 
 
 extern "C" double calculation_GPU();
