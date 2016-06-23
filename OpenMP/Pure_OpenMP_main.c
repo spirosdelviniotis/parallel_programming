@@ -4,11 +4,6 @@
  * Project: MPI 
  */
 
-/* TO DO */
-// Make code robust
-// Remove prints and unusable comments
-// Handle return values from OpenMP functions ?
-
 // mpicc -fopenmp -o Pure_OpenMP_main Pure_OpenMP_main.c -lm
 
 #include <stdio.h>
