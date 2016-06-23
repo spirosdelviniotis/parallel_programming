@@ -7,9 +7,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Spiros%20Delviniotis/Documents/NetBeansProjects/Parallel_programming_DI/parallel_programming_DI/MPI/MPI_main.c</file>
-            <file>file:/C:/Users/Spiros%20Delviniotis/Documents/NetBeansProjects/Parallel_programming_DI/parallel_programming_DI/OpenMP/OpenMP_main.c</file>
-            <file>file:/C:/Users/Spiros%20Delviniotis/Documents/NetBeansProjects/Parallel_programming_DI/parallel_programming_DI/OpenMP/machines</file>
+            <file>file:/C:/Users/Spiros%20Delviniotis/Documents/NetBeansProjects/Parallel_programming_DI/parallel_programming_DI/MPI_Heat_2D/mpi_heat2D.c</file>
+            <file>file:/C:/Users/Spiros%20Delviniotis/Documents/NetBeansProjects/Parallel_programming_DI/parallel_programming_DI/CUDA/CUDA_main.cu</file>
+            <file>file:/C:/Users/Spiros%20Delviniotis/Documents/NetBeansProjects/Parallel_programming_DI/parallel_programming_DI/OpenMP/Makefile</file>
         </group>
     </open-files>
 </project-private>
