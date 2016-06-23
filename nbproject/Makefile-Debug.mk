@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/MPI/MPI_main.o \
 	${OBJECTDIR}/MPI_Heat_2D/mpi_heat2D.o \
 	${OBJECTDIR}/OpenMP/OpenMP_main.o \
-	${OBJECTDIR}/OpenMP/Pure_OpenMP_main.o
+	${OBJECTDIR}/OpenMP/Pure_OpenMP_main.o \
+	${OBJECTDIR}/Serial_heat2D.o
 
 
 # C Compiler Flags
@@ -84,6 +85,11 @@ ${OBJECTDIR}/OpenMP/Pure_OpenMP_main.o: OpenMP/Pure_OpenMP_main.c
 	${MKDIR} -p ${OBJECTDIR}/OpenMP
 	${RM} "$@.d"
 	$(COMPILE.c) -g -I. -include . -include CUDA/common/inc/lcutil.h -include CUDA/common/inc/timestamp.h -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OpenMP/Pure_OpenMP_main.o OpenMP/Pure_OpenMP_main.c
+
+${OBJECTDIR}/Serial_heat2D.o: Serial_heat2D.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I. -include . -include CUDA/common/inc/lcutil.h -include CUDA/common/inc/timestamp.h -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Serial_heat2D.o Serial_heat2D.c
 
 # Subprojects
 .build-subprojects:
