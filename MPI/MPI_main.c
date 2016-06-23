@@ -1,6 +1,6 @@
 /*
  * Author: Spiros Delviniotis
- * File: main.c
+ * File: MPI_main.c
  * Project: MPI 
  */
 

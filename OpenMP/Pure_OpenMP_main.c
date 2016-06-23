@@ -1,6 +1,6 @@
 /*
  * Author: Spiros Delviniotis
- * File: main.c
+ * File: Pure_OpenMP_main.c
  * Project: MPI 
  */
 
@@ -17,9 +17,9 @@ int omp_get_thread_num(void) { return 0; }
 int omp_get_num_threads(void) { return 1; }
 #endif
 
-#define NXPROB      3600                 /* x dimension of problem grid */
-#define NYPROB      3600                 /* y dimension of problem grid */
-#define STEPS       100                /* number of time steps */
+#define NXPROB      3600                /* x dimension of problem grid */
+#define NYPROB      3600                /* y dimension of problem grid */
+#define STEPS       100			/* number of time steps */
 
 
 struct Parms {
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 
-	table_u = (float*) malloc((2 * NXPROB * NYPROB) * sizeof(float)); //free must be added!
+	table_u = (float*) malloc((2 * NXPROB * NYPROB) * sizeof(float));
 	if (table_u == NULL) {
 		printf("Main ERROR: Allocation memory.\n");
 		return(EXIT_FAILURE);
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 	iz = 0;
 	
 	for (it = 1; it <= STEPS; it++){
-		update(1, NXPROB - 2 + iz*NXPROB*NYPROB, table_u + (1-iz)*NXPROB*NYPROB);  //?????
+		update(1, NXPROB - 2 + iz*NXPROB*NYPROB, table_u + (1-iz)*NXPROB*NYPROB);
 		
 		iz = 1 - iz;
 	}

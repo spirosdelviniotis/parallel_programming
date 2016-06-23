@@ -1,3 +1,11 @@
+## -*- Makefile -*-
+##
+## User: Spiros Delviniotis
+##
+##
+
+#### Compiler and tool definitions shared by all build targets #####
+
 CUDA_INSTALL_PATH = /opt/cuda
 CC = g++
 OPTFLAG = -O2 -fomit-frame-pointer -ftree-vectorize -ftree-vectorizer-verbose=0  -funroll-loops

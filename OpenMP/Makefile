@@ -4,7 +4,6 @@
 ##
 ##
 
-
 #### Compiler and tool definitions shared by all build targets #####
 OpenMP_main: OpenMP_main.c
 	#mpicc -fopenmp -o OpenMP_main OpenMP_main.c -lm

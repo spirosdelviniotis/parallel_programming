@@ -1,6 +1,6 @@
 /*
  * Author: Spiros Delviniotis
- * File: main.c
+ * File: OpenMPI_main.c
  * Project: MPI 
  */
 
@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define NXPROB      240		/* x dimension of problem grid */
-#define NYPROB      240                /* y dimension of problem grid */
+#define NXPROB      240			/* x dimension of problem grid */
+#define NYPROB      240			/* y dimension of problem grid */
 #define STEPS       100			/* number of time steps */
 #define DTAG        0			/* message tag */
 #define UTAG        1			/* message tag */

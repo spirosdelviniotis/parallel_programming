@@ -27,6 +27,7 @@ int main (int argc, char *argv[])
 	
         start = 0;
 	end = start + NYPROB - 2;
+	
 	/* Initialize everything - including the borders - to zero */
 	for (iz=0; iz<2; iz++)
 		for (ix=0; ix<NXPROB; ix++) 
@@ -42,7 +43,6 @@ int main (int argc, char *argv[])
 		iz = 1 - iz;
 	}
 	
-	prtdat(NXPROB, NYPROB, u, "final.dat");
 }
 
 
@@ -74,22 +74,4 @@ void inidat(int nx, int ny, float *u) {
 			*(u + ix * ny + iy) = (float) (ix * (nx - ix - 1) * iy * (ny - iy - 1) + 10);
 		}
 	}
-}
-
-
-void prtdat(int nx, int ny, float *u1, char *fnam) {
-	int ix, iy;
-	FILE *fp;
-
-	fp = fopen(fnam, "w");
-	for (iy = ny-1; iy >= 0; iy--) {
-		for (ix = 0; ix <= nx-1; ix++) {
-			fprintf(fp, "%6.1f", *(u1+ix*ny+iy));
-			if (ix != nx-1) 
-				fprintf(fp, " ");
-			else
-				fprintf(fp, "\n");
-		}
-	 }
-	fclose(fp);
 }
