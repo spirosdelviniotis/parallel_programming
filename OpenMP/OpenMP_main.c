@@ -40,7 +40,6 @@ struct Parms {
 int main(int argc, char *argv[])
 {
 	void	inidat(),
-		prtdat(),
 		update_outside_table(),
 		update_inside_table();
 	float	*table_u;		/* array for grid */
@@ -62,16 +61,7 @@ int main(int argc, char *argv[])
 		process_clock = 0,	/* process's duration */
 		master_clock  = 0;	/* master's duration */
 
-	/* Logs for Debug */
-//	FILE * fp[9];
-//	int temp;
-//
-//	for (temp = 0; temp < 9; temp++) {
-//		char str[10];
-//		sprintf(str, "%d", temp);
-//		fp[temp] = fopen(str, "w");
-//	}
-
+	
 	/* First, find out my taskid and how many tasks are running */
 	MPI_Init(&argc, &argv);
 	MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
@@ -192,8 +182,6 @@ int main(int argc, char *argv[])
 	
 	/* Stop Timer */
 	end_time = MPI_Wtime();
-	
-//	prtdat(fp[taskid], sub_x, sub_y, table_u, 1, 1, sub_table_dimention, taskid);
 
 	process_clock = end_time - start_time;
 	MPI_Reduce(&process_clock, &master_clock, 1, MPI_DOUBLE, MPI_MAX, 0, cartcomm);
@@ -272,31 +260,5 @@ void inidat(int nx, int ny, int y, float *u)
 			*(u + ix * (y) + iy) = (float) (ix * (nx - ix - 1) * iy * (ny - iy - 1) + 10);
 		}
 	}
-}
-
-
-/**************************************************************************
- * subroutines prtdat
- **************************************************************************/
-void prtdat(FILE *fp, int x, int y, float *u, int start1, int start2, int end, int taskid)
-{
-	int j, i;
-	for (i = 0; i < x; i++) {
-		for (j = 0; j < y; j++) {
-			fprintf(fp, "%6.1f ", *(u + i * y + j));
-		}
-		fprintf(fp, "\n");
-	}
-
-	fprintf(fp, "\n\n");
-	for (i = start1; i <= start1 + end - 1; i++) {
-		for (j = start2; j <= start2 + end - 1; j++) {
-			fprintf(fp, "%6.1f ", *(u + i * y + j));
-		}
-		fprintf(fp, "\n");
-	}
-
-	fclose(fp);
-	printf("taskid in fprint = %d\n", taskid);
 }
 
