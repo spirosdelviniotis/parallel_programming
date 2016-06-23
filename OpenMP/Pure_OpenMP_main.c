@@ -1,7 +1,7 @@
 /*
  * Author: Spiros Delviniotis
  * File: Pure_OpenMP_main.c
- * Project: MPI 
+ * Project: Parallel Programming 
  */
 
 // mpicc -fopenmp -o Pure_OpenMP_main Pure_OpenMP_main.c -lm

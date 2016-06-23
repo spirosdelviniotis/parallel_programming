@@ -1,7 +1,7 @@
 /*
  * Author: Spiros Delviniotis
  * File: OpenMPI_main.c
- * Project: MPI 
+ * Project: Parallel Programming 
  */
 
 #include "mpi.h"

@@ -1,6 +1,8 @@
-/****************************************************************************
- DELVINIO
- ****************************************************************************/
+/*
+ * Author: Spiros Delviniotis
+ * File: Serial_heat2D.c
+ * Project: Parallel Programming 
+ */
 
 #include <stdio.h>
 #include <stdlib.h>

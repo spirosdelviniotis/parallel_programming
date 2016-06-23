@@ -1,3 +1,9 @@
+/*
+ * Author: Spiros Delviniotis
+ * File: CUDA_main.cu
+ * Project: Parallel Programming
+ */
+
 #ifndef CUDA_MAIN_H
 #define CUDA_MAIN_H
 
